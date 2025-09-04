@@ -8,7 +8,7 @@ import Image from 'next/image'
 const Navbar = () => {
 
     const [toggle, setToggle] = useState(false) 
-    let handleClick = ()=>setToggle(!toggle)
+    const handleClick = ()=>setToggle(!toggle)
 
     return (
         <div className='w-full h-32 z-10 fixed bg-gradient-to-b from-[#f9f9f9] via-[#f9f9f9]/85 to-transparent'>
