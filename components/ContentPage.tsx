@@ -119,18 +119,18 @@ export function ContentPage() {
                     latest collections.
                     </div>
                     <div className="font-semibold text-right">
-                        there are our latest collections, that we always willing to update every items to let you all know what's new through
-                        our social media. Visit out social media to get more update and news. 
+                        {`there are our latest collections, that we always willing to update every items to let you all know what's new through
+                        our social media. Visit out social media to get more update and news. `}
                     </div>
                 </div>
                     <div className="items-center justify-center my-4 flex flex-col">
                         <p className="text-[19.2px] font-bold my-2">
                             Liberty Walk Collections
                         </p>
-                        <p className="max-w-[700px]">Liberty Walk is a Japanese tuning company founded by Wataru Kato.
+                        <p className="max-w-[700px]">{`Liberty Walk is a Japanese tuning company founded by Wataru Kato.
                             They are famous worldwide for creating wide-body kits and aggressive custom designs for supercars
                             and sports cars. Yet liberty Walk isn’t only famous in the real car tuning world — their wild wide-body
-                            designs are also recreated in diecast models by brands like MiniGT, Ignition Model, and Hot Wheels.
+                            designs are also recreated in diecast models by brands like MiniGT, Ignition Model, and Hot Wheels.`}
                         </p>
                     </div>
                     <div className="grid grid-cols-4 gap-2 my-7">
