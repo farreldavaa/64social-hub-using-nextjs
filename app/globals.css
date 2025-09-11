@@ -1,26 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+#root {
+  max-width: full;
+  max-heght: full;
+  margin: 0 auto;
+  text-align: center;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.img{
+  object-position: 25% 75%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.hover\:chroma-text:hover {
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet,
+    red
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: chroma-shift 8s linear infinite;
+}
+
+@keyframes chroma-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes chromaAnimation{
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(180deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.chroma-effect{
+  animation: chromaAnimation 3s linear infinite;
+}
+
+@layer base{
+  li{
+    @apply p-4
+  }
+  button{
+    @apply text-white border
+    bg-indigo-600
+    border-indigo-600
+    hover:bg-transparent
+    hover:text-indigo-600
+    rounded-md
+  }
+  ul{
+    padding: 0;
+    list-style-type: none;
   }
 }
 
+
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 } */
+
+
+/* Custom font family */
+@layer base {
+  :root {
+    --font-sans: "Atkinson Hyperlegible", sans-serif;
+    --font-poppins: "Poppins", sans-serif;
+    --font-helvetica: "Helvetica", sans-serif;
+    --font-futura: "Futura", sans-serif;
+    --font-inter: "Inter", sans-serif;
+    --font-atkison: "Atkinson Hyperlegible", sans-serif; /* typo ikut */
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-archivo: "Archivo", sans-serif;
+    --font-neue: "Helvetica Neue", sans-serif;
+
+    /* custom colors */
+    --color-primary: #00040f;
+    --color-secondary: #00f6ff;
+    --color-dim-white: rgba(255, 255, 255, 0.7);
+    --color-dim-blue: rgba(9, 151, 124, 0.1);
+  }
+}
+
+/* Custom animations */
+@layer utilities {
+  @keyframes chromaShift {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  .animate-chroma {
+    animation: chromaShift 3s infinite linear;
+  }
+
+  /* Object position */
+  .object-center-bottom {
+    object-position: center bottom;
+  }
+
+  /* Colors */
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  .text-dimWhite {
+    color: var(--color-dim-white);
+  }
+  .bg-dimWhite {
+    background-color: var(--color-dim-white);
+  }
+  .text-dimBlue {
+    color: var(--color-dim-blue);
+  }
+  .bg-dimBlue {
+    background-color: var(--color-dim-blue);
+  }
+  /* Fonts */
+  .font-neue {
+    font-family: var(--font-neue);
+  }
+}

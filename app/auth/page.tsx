@@ -51,8 +51,8 @@ const Login = () => {
                             </button>
                            
                         </form>
-                         <Link className="text-left flex text-sm text-red-500 hover:underline" href="/register">
-                            forgot password?
+                         <Link className="text-left flex text-sm text-purple-800 hover:underline" href="/register">
+                            create new account here.
                             </Link>
                     </div>
                 </div>

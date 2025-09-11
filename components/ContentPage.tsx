@@ -84,17 +84,6 @@ import Image from "next/image";
                             </span>
                         </div>
                     )}
-                {/* <div className="bg-emerald-200 rounded-xl overflow-hidden drop-shadow-md hover:scale-105 transition-transform duration-300">
-                    <img className="h-56 w-full object-cover" src={content.coverImg} alt={content.title}/>
-                        <div className="p-8">
-                            <h3 className="font-bold text-xl">
-                                {content.title}
-                            </h3>
-                            <p className="text-gray-600 text-sm">
-                                {content.desc}
-                            </p>
-                        </div>
-                </div> */}
                 </Link>
                 )}
         </div>

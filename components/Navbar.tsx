@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import React, {useState} from 'react'
 import LogoChroma from '../public/assets/animated_logo_rainbow_matte.gif'
+import Avatar from '../public/assets/avatar.png'
 import Image from 'next/image'
 
 const Navbar = () => {
@@ -25,10 +26,10 @@ const Navbar = () => {
                         <li>login</li> 
                         </Link>
                     </ul>
-                    <img src="../assets/avatar.png" alt="avatar" className='' />
+                    <Image src={Avatar} alt="avatar" className='' />
                 </div>
                 <div className='md:hidden' onClick={handleClick}>
-                    <img src="" alt="" className='w-[28px] h-[28px] object-contain mr-10' />
+                    {/* <img src="" alt="" className='w-[28px] h-[28px] object-contain mr-10' /> */}
                 </div>
             </div>
                 <ul className={toggle?'absolute bg-white w-full px-8 md:hidden' : 'hidden'}>
