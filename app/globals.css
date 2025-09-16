@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap');
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;
@@ -146,7 +147,7 @@ button:focus-visible {
     --font-helvetica: "Helvetica", sans-serif;
     --font-futura: "Futura", sans-serif;
     --font-inter: "Inter", sans-serif;
-    --font-atkison: "Atkinson Hyperlegible", sans-serif; /* typo ikut */
+    --font-atkison: "Atkinson Hyperlegible", sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
     --font-archivo: "Archivo", sans-serif;
     --font-neue: "Helvetica Neue", sans-serif;
@@ -207,5 +208,20 @@ button:focus-visible {
   /* Fonts */
   .font-neue {
     font-family: var(--font-neue);
+  }
+  .font-archivo {
+    font-family: var(--font-archivo);
+  }
+  .font-atkison {
+    font-family: var(--font-atkison);
+  }
+  .font-montserrat {
+    font-family: var(--font-montserrat);
+  }
+  .font-poppins {
+    font-family: var(--font-poppins);
+  }
+  .font-helvetica {
+    font-family: var(--font-helvetica);
   }
 }

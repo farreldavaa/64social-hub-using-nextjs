@@ -23,10 +23,15 @@ const Navbar = () => {
                         <li>blog</li>
                         <li>merch</li>
                         <Link href="/auth">
-                        <li>login</li> 
+                        <li className="flex item-center gap-2">
+                            <span>
+                                login
+                            </span>
+                            <Image src={Avatar} alt="avatar" className='w-5 h-5 my-1' />
+                        </li> 
                         </Link>
                     </ul>
-                    <Image src={Avatar} alt="avatar" className='' />
+                    
                 </div>
                 <div className='md:hidden' onClick={handleClick}>
                     {/* <img src="" alt="" className='w-[28px] h-[28px] object-contain mr-10' /> */}

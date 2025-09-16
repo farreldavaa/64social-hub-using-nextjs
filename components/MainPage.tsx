@@ -33,10 +33,10 @@ const MainPage = () => {
       </div>
       <div className="w-full absolute top-[35%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
         {/* <img src="../images/animated_logo_rainbow_matte.gif" alt="Logo" className="mx-auto w-24 h-24" /> */}
-        <div className="font-neue text-4xl flex flex-col items-center">
+        <div className="text-4xl flex flex-col items-center">
           welcome to
         </div>
-        <div className="text-5xl mt-[-5px] font-montserrat font-bold">
+        <div className="text-5xl font-montserrat   font-bold mt-[-5px]">
           64 SOCIAL HUB
         </div>
         <p className="text-xl">
