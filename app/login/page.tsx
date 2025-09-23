@@ -1,9 +1,36 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Card2 from "../../public/assets/card2.png";
 
-const Login = () => {
+import {useState} from "react";
+
+export default function LoginPage(){
+    const [form, setForm] = useState({
+        username: "", password: ""
+    })
+    const [message, setMessage] = useState("");
+
+    async function handleLogin(e: React.FormEvent ) {
+        e.preventDefault();
+        setMessage("Checking...");
+
+        const res = await fetch("/api/login",{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(form),
+        });
+
+        const json = await res.json();
+        if(res.ok){
+            setMessage("Login success!");
+            
+        }else {
+            setMessage(json.error||"Login Failed");
+        }
+    }
     return (
         <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-r from-black via-white-500 to-gray-200 p-8">
             <div className="grid md:grid-cols-2 gap-10 max-w-5xl w-full bg-white/70 backdrop-blur-md rounded-2xl p-10 shadow-lg">
@@ -31,16 +58,18 @@ const Login = () => {
                                 HubID.
                             </span>
                         </h2>
-                        <form className="space-y-3">
+                        <form onSubmit={handleLogin} className="space-y-3">
                             <input
                                 type="text"
                                 placeholder="username"
                                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300"
+                                onChange={(e) => setForm({...form, username: e.target.value})}
                             />
                             <input
                                 type="password"
                                 placeholder="password"
                                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300"
+                                onChange={(e) => setForm({...form, password: e.target.value})}
                             />
                             <button
                                 type="submit"
@@ -57,9 +86,12 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
 
-export default Login;
+// const Login = () => {
+//     
+// }
+
+// export default Login;
