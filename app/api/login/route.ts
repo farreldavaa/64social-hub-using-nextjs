@@ -12,6 +12,13 @@ const database = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+interface User{
+  id : string;
+  username: string;
+  password: string;
+  role: string;
+}
+
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
@@ -26,8 +33,8 @@ export async function POST(req: Request) {
     }
 
     // ambil user berdasarkan username
-    const { data: user, error } : {data: any; error: PostgrestError | null} = await database
-      .from("users")
+    const { data: user, error }: {data: User | null; error: PostgrestError | null} = await database
+      .from("users") 
       .select("*")
       .eq("username",username)
       .maybeSingle();

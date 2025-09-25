@@ -22,7 +22,7 @@ const Navbar = () => {
                         <li>collections</li>
                         <li>blog</li>
                         <li>merch</li>
-                        <Link href="/auth">
+                        <Link href="/login">
                         <li className="flex item-center gap-2">
                             <span>
                                 login
