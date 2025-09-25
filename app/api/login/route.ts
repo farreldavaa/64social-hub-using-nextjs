@@ -14,7 +14,10 @@ const database = createClient(
 
 export async function POST(req: Request) {
   try {
-    const { username, password } = await req.json();
+    const formData = await req.formData();
+    const username = formData.get('username') as string;
+    const password = formData.get('password') as string;
+    
     if ((!username) || !password) {
       return NextResponse.json(
         { error: "Data tidak lengkap" },

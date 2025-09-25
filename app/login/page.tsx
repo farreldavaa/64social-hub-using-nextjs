@@ -1,34 +1,53 @@
 "use client"
 
+import {useState} from "react";
+import { useRouter } from "next/navigation";
+import { error } from "console";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Card2 from "../../public/assets/card2.png";
-
-import {useState} from "react";
 
 export default function LoginPage(){
     const [form, setForm] = useState({
         username: "", password: ""
     })
     const [message, setMessage] = useState("");
+    const router = useRouter();
 
     async function handleLogin(e: React.FormEvent ) {
         e.preventDefault();
         setMessage("Checking...");
 
-        const res = await fetch("/api/login",{
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(form),
-        });
+        const formData = new FormData();
+        formData.append("username", form.username);
+        formData.append("password",form.password);
+        
+        console.log("Sending form:", formData);
 
-        const json = await res.json();
-        if(res.ok){
-            setMessage("Login success!");
-            
-        }else {
-            setMessage(json.error||"Login Failed");
+        try{
+            const res = await fetch("/api/login/", {
+                method: "POST",
+                body: formData,
+            });
+
+            console.log("Raw respond:", res);
+
+            const data = await res.json();
+            console.log("Respond data:", data);
+                    if(res.ok){
+                        setMessage("Login success!");
+                        
+                    }else {
+                        setMessage(data.error||"Login Failed");
+                    }
+            if(res.ok){
+                console.log("Redirect to dashboard . . .");
+                router.push("/");
+            }
+            }catch(err){
+            console.error("Login error:", err);
+            setMessage("Network error, try again");
         }
     }
     return (
