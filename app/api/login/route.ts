@@ -66,7 +66,11 @@ export async function POST(req: Request) {
     return res;
     
   } catch (err) {
-    console.error("Login error:", err)
-    return NextResponse.json({ error: "Error",err }, { status: 500 });
+  if (err instanceof Error) {
+    console.error("Login error:", err.message)
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+  console.error("Login error:", err);
+  return NextResponse.json({ error: "Unknown error" }, { status: 500 });
   }
 }
