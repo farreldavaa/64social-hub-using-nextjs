@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, PostgrestError } from "@supabase/supabase-js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     }
 
     // ambil user berdasarkan username
-    const { data: user, error } = await database
+    const { data: user, error } : {data: any; error: PostgrestError | null} = await database
       .from("users")
       .select("*")
       .eq("username",username)
@@ -58,8 +58,8 @@ export async function POST(req: Request) {
 
     return res;
     
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Login error:", err)
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: "Unknown error" }, { status: 500 });
   }
 }

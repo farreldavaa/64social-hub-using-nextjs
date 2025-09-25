@@ -2,7 +2,6 @@
 
 import {useState} from "react";
 import { useRouter } from "next/navigation";
-import { error } from "console";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -45,7 +44,7 @@ export default function LoginPage(){
                 console.log("Redirect to dashboard . . .");
                 router.push("/");
             }
-            }catch(err){
+            }catch(err: unknown){
             console.error("Login error:", err);
             setMessage("Network error, try again");
         }

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { createClient, PostgrestError } from '@supabase/supabase-js'
 
 
 const database = createClient(
@@ -8,7 +8,7 @@ const database = createClient(
 )
 
 export async function GET() {
-  const { data, error } = await database
+  const { data, error }: {data: any; error:PostgrestError | null} = await database
     .from('articles')
     .select('id,title, content, author_by, created_at, updated_at, thumbnail_article, users(id, nama, username)')
     .limit(10)

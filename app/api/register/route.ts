@@ -76,10 +76,10 @@ export async function POST(req: Request) {
       { message: "User registered successfully" },
       { status: 200 }
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("API catch error:", err);
     return NextResponse.json(
-      { error: err.message || "Internal server error" },
+      { error: "Unknown error" },
       { status: 500 }
     );
   }
