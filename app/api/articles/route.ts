@@ -8,7 +8,7 @@ const database = createClient(
 )
 
 export async function GET() {
-  const { data, error }: {data: any; error:PostgrestError | null} = await database
+  const { data, error }: {data: unknown; error:PostgrestError | null} = await database
     .from('articles')
     .select('id,title, content, author_by, created_at, updated_at, thumbnail_article, users(id, nama, username)')
     .limit(10)
@@ -25,7 +25,7 @@ try{
   const body = await req.json()
   const { title, content, thumbnail_article, author_by } = body
     
-  const { data: user, error: userError} = await database
+  const { data: user, error: userError}: {data: {id: string; role:string} | null; error: PostgrestError | null} = await database
     .from('users')
     .select('id, role')
     .eq('id', author_by)
@@ -36,14 +36,14 @@ try{
   }if(user.role !== 'admin'){
     return NextResponse.json({ error: 'You are not authorized' }, { status: 403 })
 } 
-    const{data, error} = await database
+    const{data, error} : {data: any; error: PostgrestError | null} = await database
     .from('articles')
     .insert([{ title, content, thumbnail_article, author_by }])
     .select()
 
     if (error) throw error;
     return NextResponse.json({ article:data[0] }) 
-    }catch(error:any){  
-        return NextResponse.json({ error: error.message }, { status: 500 }) 
+    }catch(error:unknown){  
+        return NextResponse.json({ error: "Unknown error" }, { status: 500 }) 
     }
 }
